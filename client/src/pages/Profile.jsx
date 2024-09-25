@@ -1,4 +1,4 @@
-//import React from 'react'
+// import React from 'react'
 import { useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
@@ -8,11 +8,12 @@ import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const fileRef = useRef(null)
-  const { currentUser, loading, error } = useSelector((state) => state.user)
+  const { currentUser, loading,error } = useSelector((state) => state.user)
   const [file,setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
+  const [updateSuccess, setUpdateSuccess]  = useState(false);
   const dispatch = useDispatch();
   
 
@@ -41,7 +42,7 @@ export default function Profile() {
           setFilePerc(Math.round(progress));
       },
       (error) => {
-        console.log(error);
+        // console.log(error);
         setFileUploadError(true);
       },
       ()=>{
@@ -61,7 +62,7 @@ export default function Profile() {
       e.preventDefault();
       try {
         dispatch(updateUserStart());
-        const res = await fetch(`/api/user/update/${currentUser._id}1`, {
+        const res = await fetch(`/api/user/update/${currentUser._id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -77,6 +78,7 @@ export default function Profile() {
         }
 
         dispatch(updateUserSuccess(data));
+        setUpdateSuccess(true);
 
       } catch (error) {
         dispatch(updateUserFailure(error.message));
@@ -99,7 +101,7 @@ export default function Profile() {
 
         <p>
           {fileUploadError ? 
-          (<span className="text-red-700">Error Image upload
+          (<span className="text-red-700">Error Image upload(image must be less than 2mb)
           </span>
           ) : filePerc > 0 && filePerc < 100 ? (
               <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
@@ -136,7 +138,9 @@ export default function Profile() {
         <span className="text-red-700 cursor-pointer">Delete account</span>
         <span className="text-red-700 cursor-pointer">Sign out</span>
       </div>
-
+        <p className="text-red-700 mt-5">{error ? error : ''}</p>
+        <p className="text-green-700 mt-5">{updateSuccess ? 'User is updated Successfull !' : ''}</p>
     </div>
   )
 }
+

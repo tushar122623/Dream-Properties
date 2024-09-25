@@ -1,6 +1,6 @@
 
 import jwt from 'jsonwebtoken';
-import { errorHandler } from '../utils/error.js';
+import { errorHandler } from './error.js';
 //import cookieParser from 'cookie-parser';
 
 
