@@ -15,6 +15,7 @@ const [rentListings, setRentListings] = useState([]);
 SwiperCore.use([Navigation]);
 console.log(offerListings);
 
+
 useEffect(() => {
   const fetchOfferListings = async () => {
     try {
@@ -28,6 +29,7 @@ useEffect(() => {
   };
 
 
+
   const fetchRentListings = async () => {
     try {
       const res = await fetch('/api/listing/get?type=rent&limit=4');
@@ -38,6 +40,7 @@ useEffect(() => {
       console.log(error);
     }
   };
+
 
 
 
@@ -68,7 +71,8 @@ fetchOfferListings();
           place with ease
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
-          xyz of property is the best place to find your next perfect place to
+          xyz of property is the best place to find your next
+           perfect place to
           live.
           <br />
           We have a wide range of properties for you to choose from.
@@ -103,12 +107,16 @@ fetchOfferListings();
         </Swiper>
       {/* {listing results for offer,sale and rent} */}
 
+
+
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent offers</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>
+              Show more offers
+              </Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {offerListings.map((listing) => (
@@ -121,7 +129,9 @@ fetchOfferListings();
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent places for rent</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>
+              Show more places for rent
+              </Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {rentListings.map((listing) => (
@@ -133,8 +143,12 @@ fetchOfferListings();
         {saleListings && saleListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent places for sale</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
+              <h2 className='text-2xl font-semibold text-slate-600'>
+                Recent places for sale
+                </h2>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>
+              Show more places for sale
+              </Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {saleListings.map((listing) => (
