@@ -119,7 +119,7 @@ export default function Profile() {
         } catch (error) {
           dispatch(deleteUserFailure(data.message));
         }
-    }
+    };
 
     const handleShowListing = async () => {
       try {

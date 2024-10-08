@@ -74,7 +74,7 @@ export default function Listing() {
           <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
             <p className='text-2xl font-semibold'>
               {listing.name} - ₹ {' '}
-              {listing.offer
+              {listing.regular
                 ? listing.discountPrice.toLocaleString('en-IN')
                 : listing.regularPrice.toLocaleString('en-IN')}
               {listing.type === 'rent' && ' / month'}
@@ -130,3 +130,7 @@ export default function Listing() {
     </main>
   )
 }
+
+
+
+

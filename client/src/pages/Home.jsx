@@ -7,6 +7,7 @@ import 'swiper/css/bundle';
 import { Navigation } from 'swiper/modules';
 import ListingItem from '../components/ListingItem';
 
+
 export default function Home() {
 const [offerListings, setOfferListings] = useState([]);
 const [saleListings, setSaleListings] = useState([]);
@@ -25,6 +26,8 @@ useEffect(() => {
       console.log(error);
     }
   };
+
+
   const fetchRentListings = async () => {
     try {
       const res = await fetch('/api/listing/get?type=rent&limit=4');
@@ -36,6 +39,8 @@ useEffect(() => {
     }
   };
 
+
+
   const fetchSaleListings = async () => {
     try {
       const res = await fetch('/api/listing/get?type=sale&limit=4');
@@ -45,14 +50,20 @@ useEffect(() => {
       log(error);
     }
   };
-  fetchOfferListings();
+fetchOfferListings();
+
 }, []);
+
   return (
+
     <div>
       {/* {top} */}
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
-          Find your next <span className='text-slate-500'>perfect</span>
+          Find your next 
+          <span className='text-slate-500'>
+            perfect
+            </span>
           <br />
           place with ease
         </h1>
@@ -64,11 +75,15 @@ useEffect(() => {
         </div>
         <Link
           to={'/search'}
-          className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
+          className='text-xs sm:text-sm text-blue-800
+           font-bold hover:underline'
         >
           Let's find property...
         </Link>
       </div>
+
+
+
       {/* {swiper} */}
       <Swiper navigation>
         {offerListings &&
@@ -132,3 +147,9 @@ useEffect(() => {
     </div>
   )
 };
+
+
+
+
+
+
