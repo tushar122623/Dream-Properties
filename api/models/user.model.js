@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+
     email:{
         type: String,
         required: true,
@@ -14,6 +15,12 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
+    },
+    contact: {
+        type: String,
+        required: true,  // Make this true if you want to ensure that a contact number is provided
+        unique: true,    // Make this true if you want to ensure contact numbers are unique
+        match: [/^\d{10}$/, "Please enter a valid contact number with 10 digits"], // Simple regex for 10-digit numbers
     },
     avatar: {
         type: String,

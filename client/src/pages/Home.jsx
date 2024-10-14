@@ -71,7 +71,7 @@ fetchOfferListings();
           place with ease
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
-          xyz of property is the best place to find your next
+          Dream Properties is the best place to find your next
            perfect place to
           live.
           <br />
