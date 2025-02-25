@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 export default function SignUp() {
   const [formData, setFormData] = useState({
     username: '',
@@ -73,7 +72,7 @@ export default function SignUp() {
 
         {/* Contact number input */}
         <input 
-          type='text' 
+          type='number' 
           placeholder='Contact number' 
           className='border p-3 rounded-lg' 
           id='contact' 
